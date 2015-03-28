@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+
+body {
+    text-align: center;
+}
+
+#photo {
+    display: inline-block;
+}
+
+#photo > a > img {
+    height: 148px;
+    width: auto;
+}
+
+#title {
+    height: 100%;
+    margin: auto;
+    padding-bottom: 5px;
+}
+
+#issue-number {
+    display: inline;
+    width: 50%;
+    padding-right: 15px;
+}
+
+#release-date {
+    display: inline;
+    width: 50%;
+    padding-left: 15px;
+}
+
+.section {
+    line-height: 50px;
+}
+
+.table-wrapper {
+    resize: none;
+}
+
+.author-table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 20px;
+    width: 100%;
+}
+
+.author-row {
+    display: table-row;
+}
+
+.author-wrapper {
+    display: table-cell;
+}
+
+.author {
+    margin: 5px 10px;
+    display: inline-block;
+    height: 368px;
+    vertical-align: top;
+}
+
+.feature {
+    height: 426px;
+    width: 320px;
+    padding-bottom: 15px;
+}
+
+.featured {
+    height: 25px;
+}
+
+#feature-bio-pic > a > img {
+    width: 248px;
+    height: 248px;
+}
+
+.bio-pic > a > img {
+    width: 198px;
+    height: 198px;
+}
+
+.bio-pic, #feature-bio-pic {
+    padding-top: 20px;
+}
+
+.long-title {
+    white-space: nowrap;
+}
+
+.three-names {
+    padding-top: 0px;
+}
+
+.piece {
+	height: 40px;
+}
+
+.single {
+    padding-top: 17px;
+}
+
+#featured-pilot {
+    width: 300px;
+}

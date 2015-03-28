@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+body {
+    text-align: center;
+}
+
+#photo > a > img {
+    height: 156px;
+    width: auto;
+}
+
+#header {
+    margin-bottom: 20px;
+}
+
+#work1, #work2, #work3, #work4, #author {
+    width: 596px;
+    padding: 5px 10px 20px 10px;
+    margin-bottom: 35px;
+}
+
+#work1, #work2 {
+    text-align: center;
+}
+
+#bio-pic > img {
+    width: 198px;
+    height: 198px;
+}
+
+#bio-pic {
+	vertical-align: top;
+    display: inline-block;
+}
+
+#bio {
+    display: inline-block;
+    text-align: center;
+    width: 55%;
+    margin-left: 20px;
+}
+
+#bio-load-point, #work-load-point1, #work-load-point2, #work-load-point3, #work-load-point4 {
+    display: inline-block;
+    text-align: left;
+    padding-bottom:10px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    margin-left: -40px;
+}
