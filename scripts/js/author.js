@@ -21,19 +21,37 @@ $(function () {
     // Parse the query string
     for(var i = 0; i < queryStringParameters.length; i++) {
         // TODO: Look into prebuilt string decoders
-        param = queryStringParameters[i].replace(/%20/g, " ").replace(/%3F/g, "?").replace(/%27/g, "'")
-            .replace(/%2C/g, ",").replace(/%0A/g, "<br/>").replace(/%21/g, "!").split('=');
+        param = queryStringParameters[i].replace(/%20/g, " ")
+        		.replace(/%3F/g, "?")
+        		.replace(/%27/g, "'")
+                .replace(/%2C/g, ",")
+                .replace(/%0A/g, "<br/>")
+                .replace(/%21/g, "!")
+                .replace(/%2F/g, "/")
+                .replace(/%3C/g, "<")
+                .replace(/%3E/g, ">")
+                .replace(/%26/g, "&")
+                .replace(/%2B/g, "+")
+                .split('=');
         params[param[0]] = param[1];
     }
     
     
     
     if (params.author) {
-        var fileRegex = /\?|'|\.|,|\*|!/g;
-        authorUrl = params.author.toLowerCase().replace(/-/g, "_").replace(/\s/g, "-").replace(fileRegex, "");
-        workUrl1 = authorUrl + "-" + params.work1.toLowerCase().replace(/-/g, "_").replace(/\s|<br\/>/g, "-").replace(fileRegex, "");
+        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>/g;
+        authorUrl = params.author.toLowerCase()
+        		.replace(/-/g, "_")
+        		.replace(/\s/g, "-")
+        		.replace(fileRegex, "");
+        workUrl1 = authorUrl + "-" + params.work1.toLowerCase()
+        		.replace(/-/g, "_")
+        		.replace(/\s|<br\/>/g, "-")
+        		.replace(/&|\+/g, "and")
+        		.replace(fileRegex, "");
         $(document).prop("title", params.author + " - " + document.title);
-        $("<img src=" + pathToBioPics + authorUrl + "." + params.bioPicExtension + "></img>").appendTo("#bio-pic");
+        $("<img src=" + pathToBioPics + authorUrl + "." + params.bioPicExtension + "></img>")
+        		.appendTo("#bio-pic");
         $("#author").prepend("<h2>" + params.author + "</h2>");
         $("#bio-load-point").load(pathToHtmlBios + authorUrl + ".html");
         
@@ -41,7 +59,10 @@ $(function () {
         $("#work-load-point1").load(pathToHtmlWorks + workUrl1 + ".html", {}, successfulLoad);
         
         if(params.work2) {
-            workUrl2 = authorUrl + "-" + params.work2.toLowerCase().replace(/-/g, "_").replace(/\s/g, "-").replace(fileRegex, "");
+            workUrl2 = authorUrl + "-" + params.work2.toLowerCase()
+            		.replace(/-/g, "_")
+            		.replace(/\s/g, "-")
+            		.replace(fileRegex, "");
             $("#work2").prepend("<h2>" + params.work2 + "</h2>");
             $("#work-load-point2").load(pathToHtmlWorks + workUrl2 + ".html", {}, successfulLoad);
         } else {
