@@ -8,6 +8,18 @@ body {
     height: 100%;
     padding: 7.5px;
     width: 320px;
+    display: table;
+}
+
+#middle > div {
+    display: table-row;
+}
+
+#middle > div > div {
+    display: table-cell;
+    width: 33%;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
 }
 
 #top {
@@ -22,31 +34,6 @@ body {
     padding: 6px;
     height: 425px;
     width: 425px;
-}
-
-#issue {
-    display: inline;
-    width: 33%;
-    padding-right: 15px;
-    text-align: left;
-}
-
-#about {
-    display: block;
-    padding-top: 7.5px;
-}
-
-#submit {
-	width: 33%;
-    display: inline;
-    text-align: center;
-}
-
-#issues {
-    display: inline;
-    width: 33%;
-    text-align: right;
-    padding-left: 15px;
 }
 
 #copy-write {
