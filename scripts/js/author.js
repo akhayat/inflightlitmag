@@ -17,52 +17,65 @@ $(function () {
                 }, 2000);
             }
         };
-    
+
     // Parse the query string
     for(var i = 0; i < queryStringParameters.length; i++) {
         // TODO: Look into prebuilt string decoders
-        param = queryStringParameters[i].replace(/%20/g, " ")
-        		.replace(/%3F/g, "?")
-        		.replace(/%27/g, "'")
+        param = queryStringParameters[i].replace(/%20|\+/g, " ")
+                .replace(/%3F/g, "?")
+                .replace(/%27/g, "'")
                 .replace(/%2C/g, ",")
                 .replace(/%0A/g, "<br/>")
                 .replace(/%21/g, "!")
                 .replace(/%2F/g, "/")
+                .replace(/%3A/g, ":")
+                .replace(/%3B/g, ";")
                 .replace(/%3C/g, "<")
                 .replace(/%3E/g, ">")
                 .replace(/%26/g, "&")
                 .replace(/%2B/g, "+")
-                .split('=');
+                .replace(/%25/g, "%")
+                .replace(/%28/g, "(")
+                .replace(/%29/g, ")")
+                .replace(/%C3%A9/g, "\u00e9")
+                .replace(/%C3%B3/g, "\u00f3")
+                .split("=");
         params[param[0]] = param[1];
     }
-    
-    
-    
+
+
+
     if (params.author) {
-        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>/g;
+        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>|:|%|;|\(|\)|\//g;
         authorUrl = params.author.toLowerCase()
-        		.replace(/-/g, "_")
-        		.replace(/\s/g, "-")
-        		.replace(fileRegex, "");
+                .replace(/-/g, "_")
+                .replace(/\s/g, "-")
+                .replace(/\u00e9/g, "e")
+                .replace(/\u00f3/g, "o")
+                .replace(fileRegex, "");
         workUrl1 = authorUrl + "-" + params.work1.toLowerCase()
-        		.replace(/-/g, "_")
-        		.replace(/\s|<br\/>/g, "-")
-        		.replace(/&|\+/g, "and")
-        		.replace(fileRegex, "");
+                .replace(/-/g, "_")
+                .replace(/\s|<br\/>/g, "-")
+                .replace(/&|\+/g, "and")
+                .replace(/\u00e9/g, "e")
+                .replace(/\u00f3/g, "o")
+                .replace(fileRegex, "");
         $(document).prop("title", params.author + " - " + document.title);
         $("<img src=" + pathToBioPics + authorUrl + "." + params.bioPicExtension + "></img>")
-        		.appendTo("#bio-pic");
+                .appendTo("#bio-pic");
         $("#author").prepend("<h2>" + params.author + "</h2>");
         $("#bio-load-point").load(pathToHtmlBios + authorUrl + ".html");
-        
+
         $("#work1").prepend("<h2>" + params.work1 + "</h2>");
         $("#work-load-point1").load(pathToHtmlWorks + workUrl1 + ".html", {}, successfulLoad);
-        
+
         if(params.work2) {
             workUrl2 = authorUrl + "-" + params.work2.toLowerCase()
-            		.replace(/-/g, "_")
-            		.replace(/\s/g, "-")
-            		.replace(fileRegex, "");
+                    .replace(/-/g, "_")
+                    .replace(/\s/g, "-")
+                    .replace(/\u00e9/g, "e")
+                    .replace(/\u00f3/g, "o")
+                    .replace(fileRegex, "");
             $("#work2").prepend("<h2>" + params.work2 + "</h2>");
             $("#work-load-point2").load(pathToHtmlWorks + workUrl2 + ".html", {}, successfulLoad);
         } else {
