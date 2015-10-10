@@ -37,6 +37,9 @@ $(function () {
                 .replace(/%25/g, "%")
                 .replace(/%28/g, "(")
                 .replace(/%29/g, ")")
+                .replace(/%5B/g, "[")
+                .replace(/%5D/g, "]")
+                .replace(/%C3%A1/g, "\u00e1")
                 .replace(/%C3%A9/g, "\u00e9")
                 .replace(/%C3%B3/g, "\u00f3")
                 .split("=");
@@ -46,10 +49,11 @@ $(function () {
 
 
     if (params.author) {
-        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>|:|%|;|\(|\)|\//g;
+        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>|:|%|;|\(|\)|\/|\[|\]/g;
         authorUrl = params.author.toLowerCase()
                 .replace(/-/g, "_")
                 .replace(/\s/g, "-")
+                .replace(/\u00e1/g, "a")
                 .replace(/\u00e9/g, "e")
                 .replace(/\u00f3/g, "o")
                 .replace(fileRegex, "");
@@ -57,6 +61,7 @@ $(function () {
                 .replace(/-/g, "_")
                 .replace(/\s|<br\/>/g, "-")
                 .replace(/&|\+/g, "and")
+                .replace(/\u00e1/g, "a")
                 .replace(/\u00e9/g, "e")
                 .replace(/\u00f3/g, "o")
                 .replace(fileRegex, "");
@@ -73,6 +78,7 @@ $(function () {
             workUrl2 = authorUrl + "-" + params.work2.toLowerCase()
                     .replace(/-/g, "_")
                     .replace(/\s/g, "-")
+                    .replace(/\u00e1/g, "a")
                     .replace(/\u00e9/g, "e")
                     .replace(/\u00f3/g, "o")
                     .replace(fileRegex, "");
