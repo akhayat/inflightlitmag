@@ -27,6 +27,7 @@ $(function () {
                 .replace(/%2C/g, ",")
                 .replace(/%0A/g, "<br/>")
                 .replace(/%21/g, "!")
+                .replace(/%23/g, "#")
                 .replace(/%2F/g, "/")
                 .replace(/%3A/g, ":")
                 .replace(/%3B/g, ";")
@@ -49,7 +50,7 @@ $(function () {
 
 
     if (params.author) {
-        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>|:|%|;|\(|\)|\/|\[|\]/g;
+        var fileRegex = /\?|'|\.|,|\*|!|<[^>]*>|:|%|;|\(|\)|\/|\[|\]|#/g;
         authorUrl = params.author.toLowerCase()
                 .replace(/-/g, "_")
                 .replace(/\s/g, "-")

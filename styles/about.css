@@ -22,3 +22,7 @@ body {
 #about-text > p {
     text-align: left;
 }
+
+#masthead {
+    text-align: center;
+}
