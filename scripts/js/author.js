@@ -43,6 +43,8 @@ $(function () {
                 .replace(/%C3%A1/g, "\u00e1")
                 .replace(/%C3%A9/g, "\u00e9")
                 .replace(/%C3%B3/g, "\u00f3")
+                .replace(/%C3%AD/g, "\u00ed")
+                .replace(/%E2%80%94/g, "\u2014")
                 .split("=");
         params[param[0]] = param[1];
     }
@@ -57,6 +59,8 @@ $(function () {
                 .replace(/\u00e1/g, "a")
                 .replace(/\u00e9/g, "e")
                 .replace(/\u00f3/g, "o")
+                .replace(/\u00ed/g, "i")
+                .replace(/\u2014/g, "~")
                 .replace(fileRegex, "");
         workUrl1 = authorUrl + "-" + params.work1.toLowerCase()
                 .replace(/-/g, "_")
@@ -65,6 +69,8 @@ $(function () {
                 .replace(/\u00e1/g, "a")
                 .replace(/\u00e9/g, "e")
                 .replace(/\u00f3/g, "o")
+                .replace(/\u00ed/g, "i")
+                .replace(/\u2014/g, "~")
                 .replace(fileRegex, "");
         $(document).prop("title", params.author + " - " + document.title);
         $("<img src=" + pathToBioPics + authorUrl + "." + params.bioPicExtension + "></img>")
@@ -82,6 +88,8 @@ $(function () {
                     .replace(/\u00e1/g, "a")
                     .replace(/\u00e9/g, "e")
                     .replace(/\u00f3/g, "o")
+                    .replace(/\u00ed/g, "i")
+                    .replace(/\u2014/g, "~")
                     .replace(fileRegex, "");
             $("#work2").prepend("<h2>" + params.work2 + "</h2>");
             $("#work-load-point2").load(pathToHtmlWorks + workUrl2 + ".html", {}, successfulLoad);
